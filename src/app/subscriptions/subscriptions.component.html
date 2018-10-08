@@ -1,0 +1,50 @@
+<app-nav ></app-nav>
+<div id="wrapper">
+	<app-sidebar ></app-sidebar>
+	<div id="content-wrapper">
+	    <div class="container-fluid">
+	<!-- Breadcrumbs-->
+	          <ol class="breadcrumb">
+	            <li class="breadcrumb-item">
+	              <a href="#">Suscripciones</a>
+	            </li>
+	            <!-- <li class="breadcrumb-item active">Tables</li> -->
+	          </ol>
+	<!-- DataTables Example -->
+	          <div class="p-3" *ngIf="alert.status" [ngClass]="alert.class">
+	            {{alert.message}}
+	          </div>
+	          <div class="card mb-3">
+	            <div class="card-header">
+	              <i class="fas fa-table"></i>
+	              <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Crear Suscripción</button>
+	            </div>
+	            <div class="card-body">
+	              <div class="table-responsive">
+	                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+	                  <thead>
+	                    <tr>
+	                      <th>Fecha</th>
+	                      <th>Código</th>
+	                      <th>Transacción</th>
+	                      <th>Usuario</th>
+	                      <th>Opciones</th>                
+	                    </tr>
+	                  </thead>
+	                  <tbody>
+	                    <tr *ngFor="let u of users">
+	                      <td>{{u.create | date}}</td>
+	                      <td>{{u.nombres+' '+u.apellidos}}</td>
+	                      <td>{{u.documento}}</td>
+	                      <td>{{u.tipoDoc}}</td>
+	                      <td><a type="button" class="btn btn-success" href="rrhh-admin/user/{{u._id}}">Detalles</a></td>
+	                    </tr>
+	                  </tbody>
+	                </table>
+	              </div>
+	            </div>
+	            <!-- <div class="card-footer small text-muted">Updated {{date | date: 'medium'}}</div> -->
+	          </div>
+	    </div>
+	</div>
+</div>
