@@ -24,17 +24,19 @@
 	                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 	                  <thead>
 	                    <tr>
-	                      <th>Fecha</th>
 	                      <th>Código</th>
-	                      <th>Transacción</th>
-	                      <th>Usuario</th>
+	                      <th>Fecha Creación</th>	                      
+	                      <th>Cliente</th>
+	                      <th>Suscriptor</th>
+	                      <th>Estado</th>
 	                      <th>Opciones</th>                
 	                    </tr>
 	                  </thead>
 	                  <tbody>
 	                    <tr *ngFor="let u of subscripcion">
-	                      <!-- <td>{{u.create | date}}</td> -->
-	                      <td>{{u.cliente.nombre}}</td>
+	                      <td>{{u._id}}</td>
+	                      <td>{{u.f_creacion | date}}</td>
+	                      <td>{{u.cliente.nombre+" "+u.cliente.apellido}}</td>
 	                      <td>{{u.suscriptor.nombre}}</td>
 	                      <td>{{u.estado}}</td>
 	                      <!-- <td><a type="button" class="btn btn-success" href="rrhh-admin/user/{{u._id}}">Detalles</a></td> -->

@@ -14,13 +14,19 @@ export class SubscriptionsComponent implements OnInit {
   subscripcion: Array<Subscripcion>;
   constructor(
   	private apiService: ApiService
-  ) { 
+  ){ 
   	this.alert = new Alert();
     this.subscripcion = new Array();
   }
 
   ngOnInit() {
-  	this.apiService.subscriptions().subscribe(d=>{this.subscripcion = d;},e=>{});
+  	this.apiService.subscriptions().subscribe(d=>{
+      this.alert = {status :false , message:'', class:''};
+      this.subscripcion = d;
+      console.log(d);
+    },e=>{
+      this.alert = {status :true , message:'No se pudo obtener los usuarios de la API', class:'alert alert-danger'};
+    });
   }
 
 }

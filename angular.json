@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../florfresca/adminpro",
+            "outputPath": "../florfresca/public/adminpro",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -25,7 +25,7 @@
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./src/assets/css/fontawesome-free/css/all.min.css",
-              "./src/assets/css/sb-admin.css",
+              // "./src/assets/css/sb-admin.css",
               "src/styles.css"
             ],
             "scripts": [

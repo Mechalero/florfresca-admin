@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     login(){
   		this.apiService.Auth0(this.user).subscribe(
   			d => {
-  				console.log('is Login!!!');
+  				console.log('is Login!!!',d);
   				this.correctLogin(d)   	
       		}, er =>{
             	console.log(er);
