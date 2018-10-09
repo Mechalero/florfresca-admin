@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../servicios/api.service';
 import { Alert } from '../core/models/alert';
+import { Subscripcion } from '../core/models/subscription';
 
 
 @Component({
@@ -10,14 +11,16 @@ import { Alert } from '../core/models/alert';
 })
 export class SubscriptionsComponent implements OnInit {
   alert: Alert;
+  subscripcion: Array<Subscripcion>;
   constructor(
   	private apiService: ApiService
   ) { 
   	this.alert = new Alert();
+    this.subscripcion = new Array();
   }
 
   ngOnInit() {
-  	this.apiService.subscriptions().subscribe(d=>{console.log(d)},e=>{});
+  	this.apiService.subscriptions().subscribe(d=>{this.subscripcion = d;},e=>{});
   }
 
 }

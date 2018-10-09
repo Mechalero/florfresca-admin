@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Alert } from '../core/models/alert';
 
 @Component({
   selector: 'app-users',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-
-  constructor() { }
+	alert:Alert;
+  constructor() {
+  	this.alert = new Alert();
+  }
 
   ngOnInit() {
   }

@@ -21,7 +21,6 @@ export class PlansComponent implements OnInit {
   }
 
   ngOnInit() {
-  	console.log('entro')
   	this.apiService.plans().subscribe(d=>{
   		this.alert = {status :false , message:'', class:''};
   		this.plans=d;
