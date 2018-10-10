@@ -10,7 +10,7 @@ import { SubscriptionsComponent }   from './subscriptions/subscriptions.componen
 import {AuthService} from "./servicios/auth.service";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'login', component: LoginComponent},
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthService]},
   { path: 'users', component: UsersComponent, canActivate:[AuthService]},
