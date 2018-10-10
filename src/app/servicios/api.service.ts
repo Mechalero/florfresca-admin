@@ -10,7 +10,8 @@ import { StorageService, Session } from './storage.service';
   providedIn: 'root'
 })
 export class ApiService {
-  private Url = 'http://localhost:5000/api'; 
+  // private Url = 'http://localhost:5000/api'; 
+  private Url = '/api';
   private  headers:HttpHeaders;
   private sesion:Session;
 
