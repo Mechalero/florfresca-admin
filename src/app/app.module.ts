@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users/users.component';
 import { PlansComponent } from './plans/plans.component';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
+import { EditComponent } from './subscriptions/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
     LoginComponent,
     UsersComponent,
     PlansComponent,
-    SubscriptionsComponent
+    SubscriptionsComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
