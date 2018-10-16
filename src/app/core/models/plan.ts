@@ -11,6 +11,7 @@ class  Size {
 }
 
 export class Plan {
+    _id:string;
 	flower:Flower;
     size:Size;
     period: string;

@@ -29,17 +29,19 @@
 	                      <th>Nombre</th>
 	                      <th>Documento</th>
 	                      <th>tipo de documento</th>
-	                      <th>-</th>                
+	                      <th>Opciones</th>                
 	                    </tr>
 	                  </thead>
 	                  <tbody>
-	                    <!-- <tr *ngFor="let u of users">
-	                      <td>{{u.create | date}}</td>
-	                      <td>{{u.nombres+' '+u.apellidos}}</td>
+	                    <tr *ngFor="let u of usuarios">
+	                      <td>{{u.creado | date:'medium'}}</td>
+	                      <td>{{u.nombre+' '+u.apellido}}</td>
 	                      <td>{{u.documento}}</td>
 	                      <td>{{u.tipoDoc}}</td>
-	                      <td><a type="button" class="btn btn-success" href="rrhh-admin/user/{{u._id}}">Detalles</a></td>
-	                    </tr> -->
+	                      <td>
+	                      	<!-- <a type="button" class="btn btn-success" href="rrhh-admin/user/{{u._id}}">Detalles</a> -->
+	                      </td>
+	                    </tr>
 	                  </tbody>
 	                </table>
 	              </div>
