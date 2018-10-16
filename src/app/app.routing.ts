@@ -6,6 +6,7 @@ import { LoginComponent }   from './login/login.component';
 import { PlansComponent }   from './plans/plans.component';
 import { UsersComponent }   from './users/users.component';
 import { SubscriptionsComponent }   from './subscriptions/subscriptions.component';
+import { EditComponent }   from './subscriptions/edit/edit.component';
 
 import {AuthService} from "./servicios/auth.service";
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent, canActivate:[AuthService]},
   { path: 'plans', component: PlansComponent, canActivate:[AuthService] },
   { path: 'subscriptions', component: SubscriptionsComponent, canActivate:[AuthService] },
+  { path: 'subscriptions/:id', component: EditComponent, canActivate:[AuthService] },
 ];
 
 @NgModule({

@@ -1,0 +1,149 @@
+<app-nav ></app-nav>
+<div id="wrapper">
+	<app-sidebar ></app-sidebar>
+	<div id="content-wrapper">
+	    <div class="container-fluid">
+	    	<div class="card mb-3">	    	  
+			  <div class="card-body">
+			  	<h3>Orden No. {{subscripcion._id}}</h3>
+			    <ul class="list-group list-group-flush">
+				  <li class="list-group-item"><b>Estado:</b> {{subscripcion.estado}}</li>
+				  <li class="list-group-item"><b>Fecha de entrega:</b> Día {{subscripcion.f_entrega | date:'dd'}}  </li>
+				  <li class="list-group-item"><b>Código de PayU Latam:</b> {{subscripcion.payuId}}</li>
+				  <li class="list-group-item"><b>Fecha de creación:</b> {{subscripcion.f_creacion | date: 'medium' }}</li>
+				</ul>
+			  </div>
+			</div>
+			<div class="card mb-3">
+	    	  <div class="card-header">
+             		Plan
+               </div>	
+			  <div class="card-body">
+			  	
+			    <div class="form-group row">
+			    	<div class="col-sm-4">
+			    		<figure class="figure">
+						  <img [src]="'http://florfresca.herokuapp.com/'+subscripcion.plan.img_flor" class="figure-img img-fluid rounded" alt="{{subscripcion.plan.flor}}">
+						  <figcaption class="figure-caption">
+						  	<h4 class="text-center">{{subscripcion.plan.flor}}</h4></figcaption>
+						</figure>
+			    	</div>
+			    	<div class="col-sm-8">
+			    		<div class="row">
+			    			<label for="staticEmail" class="col-sm-4 col-form-label">Código</label>
+						    <div class="col-sm-8">
+						      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.plan._id}}">
+						    </div>
+						    
+						    <label for="staticEmail" class="col-sm-4 col-form-label">Código Payu Latam</label>
+						    <div class="col-sm-8">
+						      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.plan.payuId}}">
+						    </div>
+						    
+						    <label for="staticEmail" class="col-sm-4 col-form-label">Precio</label>
+						    <div class="col-sm-8">
+						      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.plan.precio}}">
+						    </div>
+						    
+						    <label for="staticEmail" class="col-sm-4 col-form-label">Tamaño</label>
+						    <div class="col-sm-8">
+						      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.plan.tamano}}">
+						    </div>
+						    
+						    <label for="staticEmail" class="col-sm-4 col-form-label">Frecuencia</label>
+						    <div class="col-sm-8">
+						      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.plan.periodo}}">
+						    </div>
+			    		</div>			    			
+			    	</div>		
+				</div>
+			  </div>
+			</div>
+	    	<div class="card mb-3">
+	    	  <div class="card-header">
+             		Cliente
+               </div>	
+			  <div class="card-body">
+			  	<div class="row">
+			  		<div class="col-sm-6">
+			  			<div class="form-group row">
+						    <label for="staticEmail" class="col-sm-4 col-form-label">Nombre</label>
+						    <div class="col-sm-8">
+						      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.cliente.nombre}} {{subscripcion.cliente.apellido}}">
+						    </div>
+						    <label for="staticEmail" class="col-sm-4 col-form-label">Teléfono</label>
+						    <div class="col-sm-8">
+						      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.cliente.telefono}}">
+						    </div>
+						     <label for="staticEmail" class="col-sm-4 col-form-label">Tipo de documento</label>
+						    <div class="col-sm-8">
+						      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.cliente.tipo_doc}}">
+						    </div>
+				  		</div>
+				  	</div>
+			  		<div class="col-sm-6">
+			  			<div class="form-group row">
+						    <label for="staticEmail" class="col-sm-4 col-form-label">Correo</label>
+						    <div class="col-sm-8">
+						      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.cliente.correo}}">
+						    </div>
+						    <label for="staticEmail" class="col-sm-4 col-form-label">Celular</label>
+						    <div class="col-sm-8">
+						      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.cliente.celular}}">
+						    </div>
+						   
+						    <label for="staticEmail" class="col-sm-4 col-form-label">Documento</label>
+						    <div class="col-sm-8">
+						      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.cliente.documento}}">
+						    </div>
+						</div>
+			  		</div>
+			  	</div>
+			  </div>
+			</div>
+			<div class="card mb-3">
+	    	  <div class="card-header">
+             		Suscriptor
+               </div>	
+			  <div class="card-body">
+			    <div class="form-group row">
+				    <label for="staticEmail" class="col-sm-2 col-form-label">Nombres</label>
+				    <div class="col-sm-4">
+				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.suscriptor.nombre}}">
+				    </div>
+				    <label for="staticEmail" class="col-sm-2 col-form-label">Relación y/o parentesco</label>
+				    <div class="col-sm-4">
+				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.suscriptor.rela_paren}}">
+				    </div>
+				</div>
+				<div class="form-group row">
+				    <label for="staticEmail" class="col-sm-2 col-form-label">Categorización dirección</label>
+				    <div class="col-sm-4">
+				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.suscriptor.catego}}">
+				    </div>
+				    <label for="staticEmail" class="col-sm-2 col-form-label">Dirección</label>
+				    <div class="col-sm-4">
+				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.suscriptor.direccion}}">
+				    </div>
+				</div>
+				<div class="form-group row">
+				    <label for="staticEmail" class="col-sm-2 col-form-label">Ciudad</label>
+				    <div class="col-sm-4">
+				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.suscriptor.ciudad}}">
+				    </div>
+				    <label for="staticEmail" class="col-sm-2 col-form-label">Teléfono</label>
+				    <div class="col-sm-4">
+				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.suscriptor.tel}}">
+				    </div>
+				</div>
+				<div class="form-group row">
+				    <label for="staticEmail" class="col-sm-2 col-form-label">¿Tienes gatos?</label>
+				    <div class="col-sm-4">
+				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.suscriptor.gatos}}">
+				    </div>
+				</div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>

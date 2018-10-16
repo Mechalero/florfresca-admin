@@ -13,6 +13,7 @@ import { StorageService, Session } from './storage.service';
 })
 export class ApiService {
   private Url = 'http://localhost:5000/api'; 
+  // private Url = '/api';
   private  headers:HttpHeaders;
   private sesion:Session;
 
@@ -35,6 +36,10 @@ export class ApiService {
     let token=(localStorage.getItem('token'));
     this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
     return this.http.get<Usuario[]>(this.Url+"/users", {headers: this.headers});
+  }
+  subscription(id:string): Observable<Subscripcion>{
+    this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
+    return this.http.get<Subscripcion>(this.Url+"/subscription/"+id,{headers: this.headers});
   }
   plans (): Observable<Plan[]>{
     let token=(localStorage.getItem('token'));

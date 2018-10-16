@@ -4,9 +4,9 @@
         <div class="card-header text-center">
           <!-- <img src="assets/img/"> --> Admin Pro</div>
         <div class="card-body">
-          <!-- <div class="alert alert-danger text-center" role="alert" *ngIf="message.status">
-            {{this.message.msj}}
-          </div> -->
+          <div class=" text-center" role="alert" *ngIf="alert.status" [ngClass]="alert.class">
+            {{alert.message}}
+          </div>
           <form>
             <div class="form-group">
               <div class="form-label-group">
