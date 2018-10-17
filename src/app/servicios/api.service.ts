@@ -12,8 +12,8 @@ import { StorageService, Session } from './storage.service';
   providedIn: 'root'
 })
 export class ApiService {
-  private Url = 'http://localhost:5000/api'; 
-  // private Url = '/api';
+  // private Url = 'http://localhost:5000/api'; 
+  private Url = '/api';
   private  headers:HttpHeaders;
   private sesion:Session;
 
@@ -29,55 +29,62 @@ export class ApiService {
     return this.http.post<any>(this.Url+"/auth/admin/tokens", query, {headers: this.headers});
   }
   subscriptions (): Observable<Subscripcion[]>{
+    this.sesion = this.storageService.getCurrentSession();
     this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
     return this.http.get<Subscripcion[]>(this.Url+"/subscriptions",{headers: this.headers});
   }
   users (): Observable<Usuario[]>{
-    let token=(localStorage.getItem('token'));
+    this.sesion = this.storageService.getCurrentSession();
     this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
     return this.http.get<Usuario[]>(this.Url+"/users", {headers: this.headers});
   }
+  user (id:string): Observable<Usuario>{
+    this.sesion = this.storageService.getCurrentSession();
+    this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
+    return this.http.get<Usuario>(this.Url+"/user/"+id, {headers: this.headers});
+  }
   subscription(id:string): Observable<Subscripcion>{
+    this.sesion = this.storageService.getCurrentSession();
     this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
     return this.http.get<Subscripcion>(this.Url+"/subscription/"+id,{headers: this.headers});
   }
-  plans (): Observable<Plan[]>{
-    let token=(localStorage.getItem('token'));
+  plans(): Observable<Plan[]>{
+    this.sesion = this.storageService.getCurrentSession();
     this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
     return this.http.get<Plan[]>(this.Url+"/plans", {headers: this.headers});
   }
   plan(id:string):Observable<Plan>{
-    let token=(localStorage.getItem('token'));
+    this.sesion = this.storageService.getCurrentSession();
     this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
     return this.http.get<Plan>(this.Url+"/plan/"+id, {headers: this.headers});
   }
   addPlan(p:Plan):Observable<any>{
-    let token=(localStorage.getItem('token'));
+    this.sesion = this.storageService.getCurrentSession();
     this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
     return this.http.post<any>(this.Url+"/plans", p,{headers: this.headers});
   }
   editPlan(p:Plan):Observable<any>{
-    let token=(localStorage.getItem('token'));
+    this.sesion = this.storageService.getCurrentSession();
     this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
     return this.http.put<any>(this.Url+"/plan/"+p._id, p,{headers: this.headers});
   }
   flowers():Observable<Flower[]>{
-    let token=(localStorage.getItem('token'));
+    this.sesion = this.storageService.getCurrentSession();
     this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
     return this.http.get<Flower[]>(this.Url+"/flowers", {headers: this.headers});
   }
   flower(id:string):Observable<Flower>{
-    let token=(localStorage.getItem('token'));
+    this.sesion = this.storageService.getCurrentSession();
     this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
     return this.http.get<Flower>(this.Url+"/flower/"+id, {headers: this.headers});
   }
   addFlower(f:Flower):Observable<any>{
-    let token=(localStorage.getItem('token'));
+    this.sesion = this.storageService.getCurrentSession();
     this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
     return this.http.post<any>(this.Url+"/flowers", f, {headers: this.headers});
   }
   editFlower(f:Flower):Observable<any>{
-    let token=(localStorage.getItem('token'));
+    this.sesion = this.storageService.getCurrentSession();
     this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
     return this.http.put<any>(this.Url+"/flower/"+f._id, f,{headers: this.headers});
   }

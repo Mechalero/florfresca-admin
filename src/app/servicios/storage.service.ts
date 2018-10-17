@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Router} from "@angular/router";
 
 export class Session {
   public token: string;
@@ -9,9 +10,11 @@ export class Session {
   providedIn: 'root'
 })
 export class StorageService {
- private localStorageService;
-  private currentSession : Session = null;
-  constructor() {
+  private localStorageService;
+  private currentSession : Session;
+  constructor(
+    private router: Router
+    ) {
     this.localStorageService = localStorage;
     this.currentSession = this.loadSessionData();
   }
@@ -21,7 +24,7 @@ export class StorageService {
   }
   loadSessionData(): Session{
     var sessionStr = this.localStorageService.getItem('currentUser');
-    return (sessionStr) ? <Session> JSON.parse(sessionStr) : null;
+    return (sessionStr) ? <Session> JSON.parse(sessionStr) : new Session();
   }
   getCurrentSession(): Session {
     return this.currentSession;
@@ -43,6 +46,6 @@ export class StorageService {
   };
   logout(): void{
     this.removeCurrentSession();
-    // this.router.navigate(['/login']);
+    this.router.navigate(['login']);
   }
 }

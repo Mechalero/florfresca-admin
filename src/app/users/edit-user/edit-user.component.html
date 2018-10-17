@@ -1,0 +1,66 @@
+<app-nav ></app-nav>
+<div id="wrapper">
+	<app-sidebar ></app-sidebar>
+	<div id="content-wrapper">
+	    <div class="container-fluid">
+	<!-- Breadcrumbs-->
+	          <ol class="breadcrumb">
+	            <li class="breadcrumb-item">
+	              <a href="#">Usuario registrado {{usuario.creado | date:'medium'}}</a>
+	            </li>
+	            <!-- <li class="breadcrumb-item active">Tables</li> -->
+	          </ol>
+	<!-- DataTables Example -->
+	          <div class="p-3" *ngIf="alert.status" [ngClass]="alert.class">
+	            {{alert.message}}
+	          </div>
+	          <div class="card mb-3">
+	            <div class="card-header">
+	              <!-- <i class="fas fa-table"></i> -->
+	              Activo: {{usuario.activo}}
+	            </div>
+	            <div class="card-body">
+	              <div class="table-responsive">
+	                <table class="table style-1 type-2 striped">
+				      <tbody>
+				        <tr>
+				          <td class="table-label color-grey">Nombre</td>
+				          <td class="table-label color-dark-2"><strong>{{usuario.nombre}}</strong></td>
+				        </tr>
+				        <tr>
+				          <td class="table-label color-grey">Apellido:</td>
+				          <td class="table-label color-dark-2"><strong>{{usuario.apellido}}</strong></td>
+				        </tr>
+				        <tr >
+				          <td class="table-label color-grey">Correo:</td>
+				          <td class="table-label color-dark-2"><strong>{{usuario.correo}}</strong></td>
+				        </tr>
+				         <tr>
+				          <td class="table-label color-grey">Teléfono:</td>
+				          <td class="table-label color-dark-2"><strong>{{usuario.telefono}}</strong></td>
+				        </tr>
+				        <tr >
+				          <td class="table-label color-grey">Celular:</td>
+				          <td class="table-label color-dark-2"><strong>{{usuario.celular}}</strong></td>
+				        </tr>
+				        <tr >
+				          <td class="table-label color-grey">Tipo de documento:</td>
+				          <td class="table-label color-dark-2"><strong>{{usuario.tipo_doc}}</strong></td>
+				        </tr>
+				        <tr >
+				          <td class="table-label color-grey">Documento:</td>
+				          <td class="table-label color-dark-2"><strong>{{usuario.documento}}</strong></td>
+				        </tr>
+				        <tr >
+				          <td class="table-label color-grey">Dirección:</td>
+				          <td class="table-label color-dark-2"><strong>{{usuario.dir}}</strong></td>
+				        </tr>                        
+				      </tbody>
+				    </table>
+	              </div>
+	            </div>
+	            <!-- <div class="card-footer small text-muted">Updated {{date | date: 'medium'}}</div> -->
+	          </div>
+	    </div>
+	</div>
+</div>

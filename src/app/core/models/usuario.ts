@@ -23,6 +23,8 @@ export class Usuario {
     pass?:string;
     dir?:string;
     payuId?:string;
+    creado:string;
+    activo:string;
     tarjeta: Array<CreditCards>;
     constructor(){
         this.tarjeta = new Array();

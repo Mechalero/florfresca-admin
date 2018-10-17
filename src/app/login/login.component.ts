@@ -31,11 +31,11 @@ export class LoginComponent implements OnInit {
   		this.apiService.Auth0(this.user).subscribe(
   			d => {
           this.alert = {status :false , message:'', class:''};
-  				console.log('is Login!!!',d);
+  				console.log('is Login!!!');
   				this.correctLogin(d)   	
       		}, er =>{
             let e:any = er;
-      			this.alert = {status :true , message:e.message, class:'alert alert-danger'};
+      			this.alert = {status :true , message:(e.error.message)?e.error.message:'Lo sentimos concexión rechazada, no se pudo conectar a la API', class:'alert alert-danger'};
       		}
       	);
   	}
