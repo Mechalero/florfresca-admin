@@ -5,6 +5,7 @@ import { Plan } from '../core/models/plan';
 import { Subscripcion } from '../core/models/subscription';
 import { Usuario } from '../core/models/usuario';
 import { Flower } from '../core/models/flower';
+import { Size } from '../core/models/size';
 import { StorageService, Session } from './storage.service';
 
 
@@ -87,5 +88,10 @@ export class ApiService {
     this.sesion = this.storageService.getCurrentSession();
     this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
     return this.http.put<any>(this.Url+"/flower/"+f._id, f,{headers: this.headers});
+  }
+  sizes():Observable<Size[]>{
+    this.sesion = this.storageService.getCurrentSession();
+    this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
+    return this.http.get<Size[]>(this.Url+"/sizes", {headers: this.headers});
   }
 }

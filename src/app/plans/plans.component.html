@@ -3,14 +3,11 @@
 	<app-sidebar ></app-sidebar>
 	<div id="content-wrapper">
 	    <div class="container-fluid">
-	<!-- Breadcrumbs-->
 	          <ol class="breadcrumb">
 	            <li class="breadcrumb-item">
 	              <a href="#">Planes</a>
 	            </li>
-	            <!-- <li class="breadcrumb-item active">Tables</li> -->
 	          </ol>
-	<!-- DataTables Example -->
 	          <div class="p-3" *ngIf="alert.status" [ngClass]="alert.class">
 	            {{alert.message}}
 	          </div>
@@ -18,7 +15,7 @@
 	            <div class="card-header">
 	              <i class="fas fa-table"></i>
 	              Lista de Planes
-	              <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Crear Plan</button>
+	              <a class="btn btn-primary float-right" href="/plan">Crear Plan</a>
 	            </div>
 	            <div class="card-body">
 	              <div class="table-responsive">
@@ -42,7 +39,7 @@
 	                      <td>{{p.period}}</td>
 	                      <td>{{p.values}}</td>
 	                      <td>
-	                      	<!-- <a type="button" class="btn btn-success" href="adminpro/users/{{u._id}}">Detalles</a> -->
+	                      	<a class="btn btn-success" href="adminpro/plans/{{p._id}}">Editar</a>
 	                      </td>
 	                    </tr>
 	                  </tbody>

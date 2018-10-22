@@ -1,3 +1,58 @@
-<p>
-  edit-plan works!
-</p>
+<app-nav ></app-nav>
+<div id="wrapper">
+	<app-sidebar ></app-sidebar>
+	<div id="content-wrapper">
+	    <div class="container-fluid">
+			<div class="p-3" *ngIf="alert.status" [ngClass]="alert.class">
+			{{alert.message}}
+			</div>
+			<div class="card mb-3">
+				<div class="card-header">
+				  Agregar Plan
+				</div>
+				<div class="card-body">
+					<form>
+					  <div class="form-group row">
+					    <label for="flor" class="col-2 col-form-label text-right">Flor</label>
+					    <div class="col-8">
+					    	<select class="form-control" [(ngModel)]="plan.flower.nombre" required="required" name="flower">
+							  <option disabled>Seleccione la flor</option>
+							  <option *ngFor="let f of flores">{{f.nombre}}</option>
+							</select>
+					    </div>
+					  </div>
+					  <hr>
+					  <div class="form-group row">
+					    <label for="size" class="col-2 col-form-label text-right">Tamaño</label>
+					    <div class="col-8">
+					    	<select class="form-control" [(ngModel)]="plan.size.nombre" required="required" name="size">
+							  <option disabled>Seleccione el tamaño</option>
+							  <option *ngFor="let t of tamanos">{{t.nombre}}</option>
+							</select>
+					    </div>
+					  </div>
+					  <hr>
+					  <div class="form-group row">
+					    <label for="period" class="col-2 col-form-label text-right">Frecuencia</label>
+					    <div class="col-8">
+					    	<select class="form-control" [(ngModel)]="plan.period" required="required" name="period">
+							  <option disabled>Seleccione</option>
+							  <option *ngFor="let p of periods">{{p}}</option>
+							</select>
+					    </div>
+					  </div>
+					  <hr>
+					  <div class="form-group row">
+					    <label for="period" class="col-2 col-form-label text-right">Precio</label>
+					    <div class="col-8">
+					    	<input type="number" class="form-control" id="staticEmail"[(ngModel)]="plan.values" required="required" name="values">
+					    </div>
+					  </div>
+					  <hr>
+					  <button type="submit" class="btn btn-primary" (click)="editar()">Editar</button>
+					</form>
+				</div>
+			</div>
+	    </div>
+	</div>
+</div>

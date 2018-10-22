@@ -25,8 +25,8 @@ export class PlansComponent implements OnInit {
   		this.alert = {status :false , message:'', class:''};
   		this.plans=d;
   	},e=>{
-  		console.log(e)
-  		this.alert = {status :true , message:'No se pudo obtener los usuarios de la API', class:'alert alert-warning'};
+      let er:any = e;
+  		this.alert = {status :true , message:(e.error.message)?e.error.message: 'No se pudo obtener los usuarios de la API', class:'alert alert-warning'};
   	})
   }
 
