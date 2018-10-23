@@ -13,8 +13,8 @@ import { StorageService, Session } from './storage.service';
   providedIn: 'root'
 })
 export class ApiService {
-  // private Url = 'http://localhost:5000/api'; 
-  private Url = '/api';
+  private Url = 'http://localhost:5000/api'; 
+  // private Url = '/api';
   private  headers:HttpHeaders;
   private sesion:Session;
 
@@ -43,6 +43,11 @@ export class ApiService {
     this.sesion = this.storageService.getCurrentSession();
     this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
     return this.http.get<Usuario>(this.Url+"/user/"+id, {headers: this.headers});
+  }
+  editUser (query:Usuario): Observable<any>{
+    this.sesion = this.storageService.getCurrentSession();
+    this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
+    return this.http.put<any>(this.Url+"/user/"+query._id,query, {headers: this.headers});
   }
   subscription(id:string): Observable<Subscripcion>{
     this.sesion = this.storageService.getCurrentSession();

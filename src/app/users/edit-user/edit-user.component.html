@@ -3,61 +3,72 @@
 	<app-sidebar ></app-sidebar>
 	<div id="content-wrapper">
 	    <div class="container-fluid">
-	<!-- Breadcrumbs-->
 	          <ol class="breadcrumb">
 	            <li class="breadcrumb-item">
 	              <a href="#">Usuario registrado {{usuario.creado | date:'medium'}}</a>
 	            </li>
-	            <!-- <li class="breadcrumb-item active">Tables</li> -->
 	          </ol>
-	<!-- DataTables Example -->
 	          <div class="p-3" *ngIf="alert.status" [ngClass]="alert.class">
 	            {{alert.message}}
 	          </div>
 	          <div class="card mb-3">
 	            <div class="card-header">
-	              <!-- <i class="fas fa-table"></i> -->
 	              Activo: {{usuario.activo}}
 	            </div>
 	            <div class="card-body">
-	              <div class="table-responsive">
-	                <table class="table style-1 type-2 striped">
-				      <tbody>
-				        <tr>
-				          <td class="table-label color-grey">Nombre</td>
-				          <td class="table-label color-dark-2"><strong>{{usuario.nombre}}</strong></td>
-				        </tr>
-				        <tr>
-				          <td class="table-label color-grey">Apellido:</td>
-				          <td class="table-label color-dark-2"><strong>{{usuario.apellido}}</strong></td>
-				        </tr>
-				        <tr >
-				          <td class="table-label color-grey">Correo:</td>
-				          <td class="table-label color-dark-2"><strong>{{usuario.correo}}</strong></td>
-				        </tr>
-				         <tr>
-				          <td class="table-label color-grey">Teléfono:</td>
-				          <td class="table-label color-dark-2"><strong>{{usuario.telefono}}</strong></td>
-				        </tr>
-				        <tr >
-				          <td class="table-label color-grey">Celular:</td>
-				          <td class="table-label color-dark-2"><strong>{{usuario.celular}}</strong></td>
-				        </tr>
-				        <tr >
-				          <td class="table-label color-grey">Tipo de documento:</td>
-				          <td class="table-label color-dark-2"><strong>{{usuario.tipo_doc}}</strong></td>
-				        </tr>
-				        <tr >
-				          <td class="table-label color-grey">Documento:</td>
-				          <td class="table-label color-dark-2"><strong>{{usuario.documento}}</strong></td>
-				        </tr>
-				        <tr >
-				          <td class="table-label color-grey">Dirección:</td>
-				          <td class="table-label color-dark-2"><strong>{{usuario.dir}}</strong></td>
-				        </tr>                        
-				      </tbody>
-				    </table>
-	              </div>
+	            	<form class="needs-validation" novalidate>
+					    <div class="form-group row">
+						    <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+						    <div class="col-sm-4">
+						      <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="usuario.nombre" required>
+						    </div>
+						    <label for="apellido" class="col-sm-2 col-form-label">apellido</label>
+						    <div class="col-sm-4">
+						      <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="usuario.apellido" required>
+						    </div>
+						</div>
+						<hr>
+						<div class="form-group row">
+						    <label for="apellido" class="col-sm-2 col-form-label">Correo</label>
+						    <div class="col-sm-8">
+						      {{usuario.correo}}
+						    </div>
+						</div>
+						<hr>
+						<div class="form-group row">
+						    <label for="dir" class="col-sm-2 col-form-label">Dirección</label>
+						    <div class="col-sm-8">
+						      <input type="text" class="form-control" id="dir" name="dir" [(ngModel)]="usuario.dir" required>
+						    </div>
+						</div>
+						<hr>
+						<div class="form-group row">
+						    <label for="celular" class="col-sm-2 col-form-label">Celular</label>
+						    <div class="col-sm-4">
+						      <input type="text" class="form-control" id="celular" name="celular" [(ngModel)]="usuario.celular" required>
+						    </div>
+						    <label for="telefono" class="col-sm-2 col-form-label">Teléfono</label>
+						    <div class="col-sm-4">
+						      <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="usuario.telefono" required>
+						    </div>
+						</div>
+						<hr>
+						<div class="form-group row">
+						    <label for="tipo_doc" class="col-sm-2 col-form-label">Tipo documento</label>
+						    <div class="col-sm-4">
+						    	<select class="form-control" id="tipo_doc" name="tipo_doc" [(ngModel)]="usuario.tipo_doc" required>
+							        <option selected>Seleccione...</option>
+							        <option *ngFor="let t of tipo" value="{{t.iso}}">{{t.desc}}</option>
+							      </select>
+						    </div>
+						    <label for="documento" class="col-sm-2 col-form-label">Documento</label>
+						    <div class="col-sm-4">
+						      <input type="text" class="form-control" id="documento" name="documento" [(ngModel)]="usuario.documento" required>
+						    </div>
+						</div>
+					    <hr>
+					  <button class="btn btn-primary" type="submit" (click)="Editar()"  [disabled]="disable" >Editar</button>
+					</form>
 	            </div>
 	            <!-- <div class="card-footer small text-muted">Updated {{date | date: 'medium'}}</div> -->
 	          </div>

@@ -8,7 +8,7 @@
 			  	<h3>Orden No. {{subscripcion._id}}</h3>
 			    <ul class="list-group list-group-flush">
 				  <li class="list-group-item"><b>Estado:</b> {{subscripcion.estado}}</li>
-				  <li class="list-group-item"><b>Fecha de entrega:</b> Día {{subscripcion.f_entrega | date:'dd'}}  </li>
+				  <li class="list-group-item"><b>Fecha de entrega:</b> {{subscripcion.f_entrega | date:'medium'}}  </li>
 				  <li class="list-group-item"><b>Código de PayU Latam:</b> {{subscripcion.payuId}}</li>
 				  <li class="list-group-item"><b>Fecha de creación:</b> {{subscripcion.f_creacion | date: 'medium' }}</li>
 				</ul>
