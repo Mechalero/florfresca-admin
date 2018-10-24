@@ -3,11 +3,26 @@
 	<app-sidebar ></app-sidebar>
 	<div id="content-wrapper">
 	    <div class="container-fluid">
+	    	<div class="p-3" *ngIf="alert.status" [ngClass]="alert.class">
+			{{alert.message}}
+			</div>
 	    	<div class="card mb-3">	    	  
 			  <div class="card-body">
 			  	<h3>Orden No. {{subscripcion._id}}</h3>
 			    <ul class="list-group list-group-flush">
-				  <li class="list-group-item"><b>Estado:</b> {{subscripcion.estado}}</li>
+				  <li class="list-group-item">
+				  	<div class="row">
+				  		<div class="col-2"><b>Estado:</b></div>
+				  		<div class="col-3">
+				  			<select class="form-control " [(ngModel)]="subscripcion.estado" name="estado" (change)="estado()">
+							  <option disabled>Cambiar</option>
+							  <option value="cancelado">Cancelado</option>
+							  <option value="aceptado">Aceptado</option>
+							  <option value="pendiente">Pendiente</option>
+							</select>
+				  		</div>
+				  	</div>
+				</li>
 				  <li class="list-group-item"><b>Fecha de entrega:</b> {{subscripcion.f_entrega | date:'medium'}}  </li>
 				  <li class="list-group-item"><b>Código de PayU Latam:</b> {{subscripcion.payuId}}</li>
 				  <li class="list-group-item"><b>Fecha de creación:</b> {{subscripcion.f_creacion | date: 'medium' }}</li>
@@ -67,34 +82,37 @@
 			  	<div class="row">
 			  		<div class="col-sm-6">
 			  			<div class="form-group row">
-						    <label for="staticEmail" class="col-sm-4 col-form-label">Nombre</label>
-						    <div class="col-sm-8">
-						      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.cliente.nombre}} {{subscripcion.cliente.apellido}}">
+						    <label for="nombre" class="col-sm-4 col-form-label">Nombre y apellido</label>
+						    <div class="col-sm-4">
+						      <input type="text" readonly [(ngModel)]="subscripcion.cliente.nombre" class="form-control-plaintext" id="nombre" name="nombre">
 						    </div>
-						    <label for="staticEmail" class="col-sm-4 col-form-label">Teléfono</label>
-						    <div class="col-sm-8">
-						      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.cliente.telefono}}">
+						    <div class="col-sm-4">
+						      <input type="text" readonly [(ngModel)]="subscripcion.cliente.apellido" class="form-control-plaintext" id="nombre" name="apellido">
 						    </div>
-						     <label for="staticEmail" class="col-sm-4 col-form-label">Tipo de documento</label>
+						    <label for="telefono" class="col-sm-4 col-form-label">Teléfono</label>
 						    <div class="col-sm-8">
-						      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.cliente.tipo_doc}}">
+						      <input type="text" readonly [(ngModel)]="subscripcion.cliente.nombre" class="form-control-plaintext" id="telefono" name="telefono">
+						    </div>
+						     <label for="tipo_doc" class="col-sm-4 col-form-label">Tipo de documento</label>
+						    <div class="col-sm-8">
+						      <input type="text" readonly [(ngModel)]="subscripcion.cliente.tipo_doc" class="form-control-plaintext" id="tipo_doc"name="tipo_doc" >
 						    </div>
 				  		</div>
 				  	</div>
 			  		<div class="col-sm-6">
 			  			<div class="form-group row">
-						    <label for="staticEmail" class="col-sm-4 col-form-label">Correo</label>
+						    <label for="correo" class="col-sm-4 col-form-label">Correo</label>
 						    <div class="col-sm-8">
-						      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.cliente.correo}}">
+						      <input type="correo" readonly class="form-control-plaintext" id="correo" name="correo " value="{{subscripcion.cliente.correo}}">
 						    </div>
-						    <label for="staticEmail" class="col-sm-4 col-form-label">Celular</label>
+						    <label for="celular" class="col-sm-4 col-form-label">Celular</label>
 						    <div class="col-sm-8">
-						      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.cliente.celular}}">
+						      <input type="text" readonly [(ngModel)]="subscripcion.cliente.celular" class="form-control-plaintext" id="celular" name="celular">
 						    </div>
 						   
-						    <label for="staticEmail" class="col-sm-4 col-form-label">Documento</label>
+						    <label for="documento"  class="col-sm-4 col-form-label">Documento</label>
 						    <div class="col-sm-8">
-						      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.cliente.documento}}">
+						      <input type="text" readonly [(ngModel)]="subscripcion.cliente.documento" class="form-control-plaintext" id="documento" name="documento" >
 						    </div>
 						</div>
 			  		</div>
@@ -107,41 +125,44 @@
                </div>	
 			  <div class="card-body">
 			    <div class="form-group row">
-				    <label for="staticEmail" class="col-sm-2 col-form-label">Nombres</label>
+				    <label for="nombres" class="col-sm-2 col-form-label">Nombres</label>
 				    <div class="col-sm-4">
-				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.suscriptor.nombre}}">
+				      <input type="text" [(ngModel)]="subscripcion.suscriptor.nombre" class="form-control" id="nombres" name="nombres">
 				    </div>
-				    <label for="staticEmail" class="col-sm-2 col-form-label">Relación y/o parentesco</label>
+				    <label for="rela_paren" class="col-sm-2 col-form-label">Relación y/o parentesco</label>
 				    <div class="col-sm-4">
-				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.suscriptor.rela_paren}}">
-				    </div>
-				</div>
-				<div class="form-group row">
-				    <label for="staticEmail" class="col-sm-2 col-form-label">Categorización dirección</label>
-				    <div class="col-sm-4">
-				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.suscriptor.catego}}">
-				    </div>
-				    <label for="staticEmail" class="col-sm-2 col-form-label">Dirección</label>
-				    <div class="col-sm-4">
-				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.suscriptor.direccion}}">
+				      <input type="text" [(ngModel)]="subscripcion.suscriptor.rela_paren" class="form-control" id="rela_paren" name="rela_paren">
 				    </div>
 				</div>
 				<div class="form-group row">
-				    <label for="staticEmail" class="col-sm-2 col-form-label">Ciudad</label>
+				    <label for="catego" class="col-sm-2 col-form-label">Categorización dirección</label>
 				    <div class="col-sm-4">
-				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.suscriptor.ciudad}}">
+				      <input type="text" [(ngModel)]="subscripcion.suscriptor.catego" class="form-control" id="catego" name="catego">
 				    </div>
-				    <label for="staticEmail" class="col-sm-2 col-form-label">Teléfono</label>
+				    <label for="direccion" class="col-sm-2 col-form-label">Dirección</label>
 				    <div class="col-sm-4">
-				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.suscriptor.tel}}">
+				      <input type="text" [(ngModel)]="subscripcion.suscriptor.direccion" class="form-control" id="direccion" name="direccion">
 				    </div>
 				</div>
 				<div class="form-group row">
-				    <label for="staticEmail" class="col-sm-2 col-form-label">¿Tienes gatos?</label>
+				    <label for="ciudad" class="col-sm-2 col-form-label">Ciudad</label>
 				    <div class="col-sm-4">
-				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{subscripcion.suscriptor.gatos}}">
+				      <input type="text" [(ngModel)]="subscripcion.suscriptor.ciudad" class="form-control" id="ciudad" name="ciudad">
+				    </div>
+				    <label for="tel" class="col-sm-2 col-form-label">Teléfono</label>
+				    <div class="col-sm-4">
+				      <input type="text" [(ngModel)]="subscripcion.suscriptor.tel" class="form-control" id="tel" name="tel">
 				    </div>
 				</div>
+				<div class="form-group row">
+				    <label for="gato" class="col-sm-2 col-form-label">¿Tienes gatos?</label>
+				    <div class="col-sm-4">
+				      <input type="text" [(ngModel)]="subscripcion.suscriptor.gatos" class="form-control" id="gato" name="gato">
+				    </div>
+				</div>
+			  </div>
+			  <div class="card-footer">
+			  	<button type="button" class="btn btn-danger float-left" (click)="editar()">Editar</button>
 			  </div>
 			</div>
 		</div>

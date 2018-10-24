@@ -31,9 +31,25 @@ export class EditComponent implements OnInit {
     this.apiService.subscription(id).subscribe(s =>{
     	this.alert = {status :false , message:'', class:''};
         this.subscripcion = s;
-        console.log(s);
       },e=>{
       	this.alert = {status :true , message:'No se pudo obtener los usuarios de la API', class:'alert alert-danger'};
+      }
+    );
+  }
+  estado(){
+    this.apiService.editSubs(this.subscripcion).subscribe(s =>{
+        this.alert = {status :true , message:'Se ha actualizado el estado de la suscripción exitosamente', class:'alert alert-success'};
+      },e=>{
+        this.alert = {status :true , message:'No se pudo obtener los usuarios de la API', class:'alert alert-danger'};
+      }
+    );
+  }
+
+  editar(){
+    this.apiService.editSubs(this.subscripcion).subscribe(s =>{
+        this.alert = {status :true , message:'Se ha actualizado los datos de la suscripción exitosamente', class:'alert alert-success'};
+      },e=>{
+        this.alert = {status :true , message:'No se pudo obtener los usuarios de la API', class:'alert alert-danger'};
       }
     );
   }
