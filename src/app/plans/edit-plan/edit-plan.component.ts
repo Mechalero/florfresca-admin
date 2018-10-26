@@ -17,6 +17,7 @@ export class EditPlanComponent implements OnInit {
 	tamanos:Array<Size>;
 	flores:Array<Flower>;
 	periods:Array<string>;
+  loading:boolean;
   constructor(
   	private route: ActivatedRoute,
   	private apiService: ApiService
@@ -26,12 +27,12 @@ export class EditPlanComponent implements OnInit {
   	this.tamanos = new Array();
   	this.flores = new Array();
   	this.periods = new Array();
+    this.loading = false;
   }
 
   ngOnInit() {
   	const id = this.route.snapshot.paramMap.get('id');
   	this.apiService.plan(id).subscribe(p=>{
-  		console.log(p);
   		this.plan = p;
   		this.loadFlower();
   		this.loadTamanos();
@@ -64,11 +65,14 @@ export class EditPlanComponent implements OnInit {
   }
 
   editar(){
-  	console.log(this.plan);
+    this.loading = true;
   	this.apiService.editPlan(this.plan).subscribe(d=>{
-  		console.log(d);
+  		this.alert = {status :true , message:'Se ha actualizado los datos del plan exitosamente', class:'alert alert-success'};
+      this.loading = false;
   	},e=>{
-  		console.log(e);
+      let er:any=e;
+      this.loading = false;
+  		this.alert = {status :true , message:(er.message)?er.message:'No se pudo conectar con la API', class:'alert alert-danger'};
   	})
   }
 

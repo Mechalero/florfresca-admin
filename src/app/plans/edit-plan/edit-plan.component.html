@@ -49,7 +49,8 @@
 					    </div>
 					  </div>
 					  <hr>
-					  <button type="submit" class="btn btn-primary" (click)="editar()">Editar</button>
+					  <button type="submit" class="btn btn-primary" (click)="editar()" [disabled]="loading">Editar</button>
+					  <img src="assets/img/loading.gif" width="50px" [hidden]="!loading">
 					</form>
 				</div>
 			</div>

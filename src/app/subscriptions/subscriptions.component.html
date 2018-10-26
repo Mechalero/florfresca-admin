@@ -29,7 +29,7 @@
 	                      <th>Cliente</th>
 	                      <th>Suscriptor</th>
 	                      <th>Estado</th>
-	                      <th>Opciones</th>                
+	                      <th rowspan="2">Opciones</th>                
 	                    </tr>
 	                  </thead>
 	                  <tbody>
@@ -41,6 +41,9 @@
 	                      <td>{{u.estado}}</td>
 	                      <td>
 	                      	<a class="btn btn-success" href="adminpro/subscriptions/{{u._id}}">Detalles</a>
+	                      </td>
+	                      <td>
+	                      	<button class="btn btn-danger"  disabled="">Eliminar</button>
 	                      </td>
 	                    </tr>
 	                  </tbody>
