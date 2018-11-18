@@ -23,7 +23,7 @@
 				  		</div>
 				  	</div>
 				</li>
-				  <li class="list-group-item"><b>Fecha de entrega:</b> Día {{subscripcion.f_entrega | date:'d'}} de cada mes </li>
+				  <li class="list-group-item"><b>Fecha de entrega:</b> Día {{subscripcion.f_entrega | date:'MMM d':'+05'}} </li>
 				  <li class="list-group-item"><b>Código de PayU Latam:</b> {{subscripcion.payuId}}</li>
 				  <li class="list-group-item"><b>Fecha de creación:</b> {{subscripcion.f_creacion | date: 'medium' }}</li>
 				</ul>
@@ -157,7 +157,11 @@
 				<div class="form-group row">
 				    <label for="gato" class="col-sm-2 col-form-label">¿Tienes gatos?</label>
 				    <div class="col-sm-4">
-				      <input type="text" [(ngModel)]="subscripcion.suscriptor.gatos" class="form-control" id="gato" name="gato">
+				      <select class="form-control " [(ngModel)]="subscripcion.suscriptor.gatos" name="gato" id="gato" >
+					  	<option disabled>Cambiar</option>
+					  	<option value="true">si</option>
+					  	<option value="false">no</option>
+					  </select>
 				    </div>
 				</div>
 			  </div>

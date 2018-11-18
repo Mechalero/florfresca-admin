@@ -1,15 +1,20 @@
-class CreditCards{
-            name: string;
-            document: number;
-            number: number;
-            expMonth: number;
-            expYear: number;
-            type: string;
-            // address: Address;
-            // constructor(){
-            //    this.address = new Address();
-            // }
-         }
+export class CreditCards{
+   token: string;
+   customerId: string;
+   number: string;
+   type: string;
+   name: string;
+   document: string;
+   address: {
+      line1: string;
+      line2: string;
+      line3: string;
+      city: string;
+      state: string;
+      country: string;
+      phone: number
+   }
+}
 
 export class Usuario {
     _id?:string;

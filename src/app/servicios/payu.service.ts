@@ -43,5 +43,14 @@ export class PayuService {
     })
     return this.http.delete<any>(this.Url+"rest/v4.9/customers/"+id+"/creditCards/"+token, {headers: this.headers});
   }
+  crediCars(token:string){
+    this.headers =  new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      "Accept": "application/json",
+      "Accept-language": "es",
+      "Authorization":"Basic "+this.base64
+    })
+    return this.http.get<any>(this.Url+"rest/v4.9/creditCards/"+token, {headers: this.headers});
+  }
   
 }

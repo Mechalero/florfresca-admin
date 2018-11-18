@@ -13,8 +13,8 @@ import { StorageService, Session } from './storage.service';
   providedIn: 'root'
 })
 export class ApiService {
-  // private Url = 'http://localhost:5000/api'; 
-  private Url = '/api';
+  private Url = 'http://localhost:5000/api'; 
+  // private Url = 'http://www.florfresca.com.co/api';
   private  headers:HttpHeaders;
   private sesion:Session;
 
@@ -103,5 +103,10 @@ export class ApiService {
     this.sesion = this.storageService.getCurrentSession();
     this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
     return this.http.get<Size[]>(this.Url+"/sizes", {headers: this.headers});
+  }
+  send(q:any):Observable<any>{
+    this.sesion = this.storageService.getCurrentSession();
+    this.headers = new HttpHeaders({'Content-Type': 'application/json','access-token':this.sesion.token});
+    return this.http.post<any>(this.Url+"/subscriptions/send", q,{headers: this.headers});
   }
 }
